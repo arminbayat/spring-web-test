@@ -1,10 +1,17 @@
 package com.bayat.armin.springwebservice.service;
 
+import com.bayat.armin.springwebservice.data.ItemRepository;
 import com.bayat.armin.springwebservice.model.Item;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
+@AllArgsConstructor
 public class ItemBusinessService {
+
+    private ItemRepository itemRepository;
 
     public Item retrieveHardCodedItem() {
         return Item.builder()
@@ -13,5 +20,9 @@ public class ItemBusinessService {
                 .price(1000)
                 .quantity(1000)
                 .build();
+    }
+
+    public List<Item> retrieveAllItems() {
+        return itemRepository.findAll();
     }
 }
