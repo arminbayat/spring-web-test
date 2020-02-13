@@ -31,10 +31,6 @@ public class ItemController {
 
     @GetMapping("/items-from-database")
     public List<Item> findAllItemsFromDatabase() {
-        List<Item> items = itemBusinessService.retrieveAllItems();
-        for (Item item : items) {
-            item.setValue(item.getPrice() * item.getQuantity());
-        }
-        return items;
+        return itemBusinessService.retrieveAllItems();
     }
 }
